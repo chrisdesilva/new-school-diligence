@@ -42,7 +42,7 @@ const IndexPage = () => {
     const form = e.target
     fetch("/", {
       method: "POST",
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: { enctype="multipart/form-data" },
       body: encode({
         "form-name": form.getAttribute("name"),
         ...formState,
