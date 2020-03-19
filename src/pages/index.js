@@ -42,7 +42,7 @@ const IndexPage = () => {
     const form = e.target
     fetch("/", {
       method: "POST",
-      headers: { "enctype": "multipart/form-data" },
+      headers: { "Content-Type": "multipart/form-data" },
       body: encode({
         "form-name": form.getAttribute("name"),
         ...formState,
@@ -83,6 +83,7 @@ const IndexPage = () => {
         name="new-school-diligence"
         data-netlify="true"
         netlify-honeypot="bot-field"
+        enctype="multipart/form-data"
         hidden
       >
         <input type="text" name="name" />
