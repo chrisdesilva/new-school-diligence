@@ -185,13 +185,7 @@ const IndexPage = () => {
           in which you operate at which students receiving Skills Fund financing
           may attend. You may upload multiple files.
         </p>
-        <input
-          onChange={handleChange}
-          value={formState.license}
-          name="license"
-          type="file"
-          required
-        />
+        <input name="license" type="file" required />
         <button type="submit">Submit</button>
       </form>
     </div>
