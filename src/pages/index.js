@@ -29,7 +29,7 @@ const IndexPage = () => {
 
   const onDrop = useCallback(acceptedFiles => {
     console.log(acceptedFiles)
-    setFile(acceptedFiles[0])
+    setFormState({ ...formState, license: acceptedFiles[0] })
   }, [])
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
@@ -102,6 +102,7 @@ const IndexPage = () => {
         <textarea name="founder" />
         <textarea name="bankruptcies" />
         <input type="text" name="financial" />
+        <input type="file" id="file" name="license" multiple />
         <input type="file" name="pending" />
         <input type="file" name="online" />
         <textarea name="noreg" />
