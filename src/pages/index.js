@@ -102,14 +102,6 @@ const IndexPage = () => {
         <textarea name="founder" />
         <textarea name="bankruptcies" />
         <input type="text" name="financial" />
-        <div {...getRootProps()}>
-          <input {...getInputProps()} />
-          {isDragActive ? (
-            <p>Drop files here...</p>
-          ) : (
-            <p>Drag and drop files here or click to select files.</p>
-          )}
-        </div>
         <input type="file" name="pending" />
         <input type="file" name="online" />
         <textarea name="noreg" />
@@ -197,12 +189,14 @@ const IndexPage = () => {
           type="text"
           required
         />
-        <p>
-          Please provide a copy of your license or state approval for all states
-          in which you operate at which students receiving Skills Fund financing
-          may attend. You may upload multiple files.
-        </p>
-        <input name="license" type="file" required />
+        <div {...getRootProps()}>
+          <input {...getInputProps()} />
+          {isDragActive ? (
+            <p>Drop files here...</p>
+          ) : (
+            <p>Drag and drop files here or click to select files.</p>
+          )}
+        </div>
         <button type="submit">Submit</button>
       </form>
     </div>
