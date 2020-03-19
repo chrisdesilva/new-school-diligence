@@ -1,11 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import SEO from "../components/seo"
-
-const encode = data => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&")
-}
+import { useDropzone } from "react-dropzone"
 
 const IndexPage = () => {
   const [formState, setFormState] = useState({
@@ -32,6 +27,20 @@ const IndexPage = () => {
     phonenumber: false,
   })
 
+  const onDrop = useCallback(acceptedFiles => {
+    console.log(acceptedFiles)
+    setFile(acceptedFiles[0])
+  }, [])
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+
+  const encode = data => {
+    const formData = new FormData()
+    Object.keys(data).forEach(k => {
+      formData.append(k, data[k])
+    })
+    return formData
+  }
+
   const handleChange = e => {
     e.preventDefault()
     setFormState({ ...formState, [e.target.name]: e.target.value })
@@ -42,7 +51,7 @@ const IndexPage = () => {
     const form = e.target
     fetch("/", {
       method: "POST",
-      headers: { "Content-Type": "multipart/form-data" },
+      // headers: { "Content-Type": "multipart/form-data" },
       body: encode({
         "form-name": form.getAttribute("name"),
         ...formState,
@@ -93,7 +102,14 @@ const IndexPage = () => {
         <textarea name="founder" />
         <textarea name="bankruptcies" />
         <input type="text" name="financial" />
-        <input type="file" name="license" />
+        <div {...getRootProps()}>
+          <input {...getInputProps()} />
+          {isDragActive ? (
+            <p>Drop files here...</p>
+          ) : (
+            <p>Drag and drop files here or click to select files.</p>
+          )}
+        </div>
         <input type="file" name="pending" />
         <input type="file" name="online" />
         <textarea name="noreg" />
