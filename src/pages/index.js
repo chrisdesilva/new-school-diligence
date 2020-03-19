@@ -192,6 +192,7 @@ const IndexPage = () => {
           type="file"
           required
         />
+        <button type="submit">Submit</button>
       </form>
     </div>
   )
