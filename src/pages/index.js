@@ -217,7 +217,6 @@ const IndexPage = () => {
         </p>
         <input
           onChange={handleAttachment}
-          value={formState.license}
           name="license"
           id="license"
           type="file"
@@ -229,7 +228,6 @@ const IndexPage = () => {
         </p>
         <input
           onChange={handleAttachment}
-          value={formState.pending}
           name="pending"
           id="pending"
           type="file"
