@@ -27,6 +27,15 @@ const IndexPage = () => {
     phonenumber: false,
   })
 
+  // const onDrop = useCallback(acceptedFiles => {
+  //   setFormState({
+  //     ...formState,
+  //     license: acceptedFiles[0],
+  //     pending: acceptedFiles[1],
+  //   })
+  // }, [])
+  // const { getRootProps, getInputProps } = useDropzone({ onDrop })
+
   const encode = data => {
     const formData = new FormData()
     Object.keys(data).forEach(k => {
@@ -56,6 +65,7 @@ const IndexPage = () => {
           name: "",
           state: "",
           address: "",
+          additionalAddress: "",
           existence: "",
           founder: "",
           bankruptcies: "",
@@ -92,12 +102,13 @@ const IndexPage = () => {
         <input type="text" name="name" />
         <input type="text" name="state" />
         <textarea name="address" />
+        <textarea name="additionalAddress" />
         <input type="text" name="existence" />
         <textarea name="founder" />
         <textarea name="bankruptcies" />
         <input type="text" name="financial" />
-        <input type="file" id="file" name="license" multiple />
-        <input type="file" name="pending" />
+        <input type="file" id="file" name="license" />
+        <input type="file" id="pending" name="pending" />
         <input type="file" name="online" />
         <textarea name="noreg" />
         <textarea name="socials" />
@@ -143,6 +154,15 @@ const IndexPage = () => {
           name="address"
           required
         />
+        <p>
+          If you have multiple campus locations, please provide the address for
+          each campus.
+        </p>
+        <textarea
+          onChange={handleChange}
+          value={formState.additionalAddress}
+          name="additionalAddress"
+        />
         <p>How long has your school been in existence (in years)?</p>
         <input
           onChange={handleChange}
@@ -187,12 +207,25 @@ const IndexPage = () => {
         <p>
           Please provide a copy of your license or state approval for all states
           in which you operate at which students receiving Skills Fund financing
-          may attend. You may upload multiple files.
+          may attend.
         </p>
         <input
           onChange={handleChange}
           value={formState.license}
           name="license"
+          id="license"
+          type="file"
+        />
+        <p>
+          If your application is pending, please provide proof that you are
+          authorized to operate, along with the application submission date and
+          expected approval date.
+        </p>
+        <input
+          onChange={handleChange}
+          value={formState.pending}
+          name="pending"
+          id="pending"
           type="file"
         />
         <button type="submit">Submit</button>
