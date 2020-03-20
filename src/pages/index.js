@@ -233,6 +233,61 @@ const IndexPage = () => {
           type="file"
         />
         <button type="submit">Submit</button>
+        <p>
+          If you operate online, please provide relevant approval from
+          regulatory agencies.
+        </p>
+        <input
+          onChange={handleAttachment}
+          name="online"
+          id="online"
+          type="file"
+        />
+        <p>
+          If you are not required to obtain regulatory approval to operate,
+          please explain and provide the basis for your exemption.
+        </p>
+        <textarea
+          onChange={handleChange}
+          value={formState.noreg}
+          name="noreg"
+        />
+        <p>Please provide links to all websites and social media accounts.</p>
+        <textarea
+          onChange={handleChange}
+          value={formState.socials}
+          name="socials"
+          required
+        />
+        <p>
+          Approximately how many different employers have hired your graduates?
+        </p>
+        <input
+          onChange={handleChange}
+          value={formState.graduates}
+          name="graduates"
+          type="text"
+          required
+        />
+        <p>How many employers have formal relationships with your school?</p>
+        <input
+          onChange={handleChange}
+          value={formState.employerrelationships}
+          name="employerrelationships"
+          type="text"
+          required
+        />
+        <p>
+          Do you partner with any governmental or community organizations? If
+          so, which ones?
+        </p>
+        <textarea
+          onChange={handleChange}
+          value={formState.partnerorgs}
+          name="partnerorgs"
+          required
+        />
+        <button type="submit">Submit</button>
       </form>
     </div>
   )
