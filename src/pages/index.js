@@ -49,6 +49,11 @@ const IndexPage = () => {
     setFormState({ ...formState, [e.target.name]: e.target.value })
   }
 
+  const handleAttachment = e => {
+    e.preventDefault()
+    setFormState({ ...formState, [e.target.name]: e.target.files[0] })
+  }
+
   const handleSubmit = e => {
     e.preventDefault()
     const form = e.target
@@ -211,7 +216,7 @@ const IndexPage = () => {
           may attend.
         </p>
         <input
-          onChange={handleChange}
+          onChange={handleAttachment}
           value={formState.license}
           name="license"
           id="license"
@@ -223,7 +228,7 @@ const IndexPage = () => {
           expected approval date.
         </p>
         <input
-          onChange={handleChange}
+          onChange={handleAttachment}
           value={formState.pending}
           name="pending"
           id="pending"
