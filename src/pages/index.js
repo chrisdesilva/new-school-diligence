@@ -27,12 +27,6 @@ const IndexPage = () => {
     phonenumber: false,
   })
 
-  const onDrop = useCallback(acceptedFiles => {
-    console.log(acceptedFiles)
-    setFormState({ ...formState, license: acceptedFiles[0] })
-  }, [])
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
-
   const encode = data => {
     const formData = new FormData()
     Object.keys(data).forEach(k => {
@@ -92,7 +86,7 @@ const IndexPage = () => {
         name="new-school-diligence"
         data-netlify="true"
         netlify-honeypot="bot-field"
-        enctype="multipart/form-data"
+        encType="multipart/form-data"
         hidden
       >
         <input type="text" name="name" />
@@ -190,14 +184,17 @@ const IndexPage = () => {
           type="text"
           required
         />
-        <div {...getRootProps()}>
-          <input {...getInputProps()} />
-          {isDragActive ? (
-            <p>Drop files here...</p>
-          ) : (
-            <p>Drag and drop files here or click to select files.</p>
-          )}
-        </div>
+        <p>
+          Please provide a copy of your license or state approval for all states
+          in which you operate at which students receiving Skills Fund financing
+          may attend. You may upload multiple files.
+        </p>
+        <input
+          onChange={handleChange}
+          value={formState.license}
+          name="license"
+          type="file"
+        />
         <button type="submit">Submit</button>
       </form>
     </div>
