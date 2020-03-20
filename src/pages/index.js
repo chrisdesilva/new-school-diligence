@@ -129,6 +129,7 @@ const IndexPage = () => {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
+        encType="multipart/form-data"
       >
         <input type="hidden" name="form-name" value="new-school-diligence" />
         <p>What is your legal entity name?</p>
