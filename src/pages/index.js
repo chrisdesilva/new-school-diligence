@@ -232,7 +232,6 @@ const IndexPage = () => {
           id="pending"
           type="file"
         />
-        <button type="submit">Submit</button>
         <p>
           If you operate online, please provide relevant approval from
           regulatory agencies.
