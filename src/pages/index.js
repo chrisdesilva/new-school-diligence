@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
 import { useStaticQuery } from "gatsby"
+import "./layout.css"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
